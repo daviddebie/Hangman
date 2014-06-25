@@ -36,8 +36,10 @@ public class GameplayActivity extends ActionBarActivity {
     }
     
     private void playGame() {
+    	// randomly choose a word to play with
     	String newWord = words[rand.nextInt(words.length)];
-    	
+    	// make sure the same word is not used twice
+    	while(newWord.equals(currentWord)) newWord = words[rand.nextInt(words.length)];
     }
     	
 
