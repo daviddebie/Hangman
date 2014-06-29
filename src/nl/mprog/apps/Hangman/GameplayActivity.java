@@ -14,32 +14,49 @@ import android.widget.GridView;
 
 public class GameplayActivity extends ActionBarActivity {
 
-	//private String words[];
 	private String currentWord;
-	//private String ltr[];
 	private String words[];
 	private Random rand;
 	private LinearLayout wordLayout;
 	private GridView letters;
+	private LetterAdapter letterAdapter;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameplay);
+        
+        // get words from arrayList
         Resources res = getResources();
         words = res.getStringArray(R.array.words);
+        
+        // initialize random and current word
         rand = new Random();
         currentWord = "";
+        
+        // set layout for word to play with
         wordLayout = (LinearLayout)findViewById(R.id.word);
+        
+        // get letter buttons
         letters = (GridView)findViewById(R.id.letters);
+        
+        // start game
         playGame();
     }
     
     private void playGame() {
-    	// randomly choose a word to play with
+    	// randomly select a word to play with
     	String newWord = words[rand.nextInt(words.length)];
+    	
     	// make sure the same word is not used twice
-    	while(newWord.equals(currentWord)) newWord = words[rand.nextInt(words.length)];
+    	while(newWord.equals(currentWord)) 
+    		newWord = words[rand.nextInt(words.length)];
+    	
+    	// set new word to current word
+    	newWord = currentWord;
+    	
+    	letterAdapter = new LetterAdapter(this);
+    	letters.setAdapter(letterAdapter);
     }
     	
 
@@ -63,89 +80,4 @@ public class GameplayActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
-    /* public void letterPressed(View view) {
-    	String ltr = ((TextView)view).getText().toString();
-    	char ltrChar = ltr.charAt(0); 
-    	switch (view.getId()) {
-    		case R.id.keyA:
-    			// do something
-    		break;
-    		case R.id.keyB:
-    			// do something
-    		break;
-    		case R.id.keyC:
-    			// do something
-    		break;
-    		case R.id.keyD:
-    			// do something
-    		break;
-    		case R.id.keyE:
-    			// do something
-    		break;
-    		case R.id.keyF:
-    			// do something
-    		break;
-    		case R.id.keyG:
-    			// do something
-    		break;
-    		case R.id.keyH:
-    			// do something
-    		break;
-    		case R.id.keyI:
-    			// do something
-    		break;
-    		case R.id.keyJ:
-    			// do something
-    		break;
-    		case R.id.keyK:
-    			// do something
-    		break;
-    		case R.id.keyL:
-    			// do something
-    		break;
-    		case R.id.keyM:
-    			// do something
-    		break;
-    		case R.id.keyN:
-    			// do something
-    		break;
-    		case R.id.keyO:
-    			// do something
-    		break;
-    		case R.id.keyP:
-    			// do something
-    		break;
-    		case R.id.keyQ:
-    			// do something
-    		break;
-    		case R.id.keyR:
-    			// do something
-    		break;
-    		case R.id.keyS:
-    			// do something
-    		break;
-    		case R.id.keyT:
-    			// do something
-    		break;
-    		case R.id.keyU:
-    			// do something
-    		break;
-    		case R.id.keyV:
-    			// do something
-    		break;
-    		case R.id.keyW:
-    			// do something
-    		break;
-    		case R.id.keyX:
-    			// do something
-    		break;
-    		case R.id.keyY:
-    			// do something
-    		break;
-    		case R.id.keyZ:
-    			// do something
-    		break;
-    	}
-    }*/
 }
