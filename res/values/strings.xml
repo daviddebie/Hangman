@@ -19,32 +19,6 @@
     <string name="title_activity_evil_gameplay">EvilGameplayActivity</string>
     <string name="button_playgame">Play Game</string>
     <string name="button_highscores">Highscores</string>
-    <string name="memb">MEMBRANOCARTILAGINOUS</string>
-    <string name="button_a">A</string>
-    <string name="button_b">B</string>
-    <string name="button_c">C</string>
-    <string name="button_d">D</string>
-    <string name="button_e">E</string>
-    <string name="button_f">F</string>
-    <string name="button_g">G</string>
-    <string name="button_h">H</string>
-    <string name="button_i">I</string>
-    <string name="button_j">J</string>
-    <string name="button_k">K</string>
-    <string name="button_l">L</string>
-    <string name="button_m">M</string>
-    <string name="button_n">N</string>
-    <string name="button_o">O</string>
-    <string name="button_p">P</string>
-    <string name="button_q">Q</string>
-    <string name="button_r">R</string>
-    <string name="button_s">S</string>
-    <string name="button_t">T</string>
-    <string name="button_u">U</string>
-    <string name="button_v">V</string>
-    <string name="button_w">W</string>
-    <string name="button_x">X</string>
-    <string name="button_y">Y</string>
-    <string name="button_z">Z</string>
+    <string name="turns_left">Turns left: </string>
 
 </resources>

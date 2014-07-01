@@ -16,14 +16,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/seekBar1"
+        android:layout_below="@+id/seekBarWordLength"
         android:layout_marginLeft="29dp"
         android:layout_marginTop="14dp" />
 
     <SeekBar
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar2"
+        android:id="@+id/seekBarGuesses"
         android:layout_above="@+id/button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="65dp"
@@ -46,11 +46,11 @@
         android:textSize="20sp"
         android:text="@string/guesses"
         android:id="@+id/guesses"
-        android:layout_above="@+id/seekBar2"
+        android:layout_above="@+id/seekBarGuesses"
         android:layout_centerHorizontal="true" />
 
     <SeekBar
-        android:id="@+id/seekBar1"
+        android:id="@+id/seekBarWordLength"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/guesses"
@@ -65,7 +65,7 @@
         android:id="@+id/word_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/seekBar1"
+        android:layout_above="@+id/seekBarWordLength"
         android:layout_centerHorizontal="true"
         android:text="@string/word_length"
         android:textSize="20sp" />

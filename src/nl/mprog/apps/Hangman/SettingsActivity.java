@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class SettingsActivity extends ActionBarActivity implements OnSeekBarChangeListener {
 	
 	// Seekbars for word length and number of guesses
-	private SeekBar seekBar1, seekBar2;
+	private SeekBar wordLength, guesses;
 	
 	// Textviews to show progress of seekbars
 	private TextView wordLengthProgress, guessesProgress;
@@ -24,17 +24,22 @@ public class SettingsActivity extends ActionBarActivity implements OnSeekBarChan
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        seekBar1 = (SeekBar)findViewById(R.id.seekBar1);
-        seekBar1.setOnSeekBarChangeListener(this);
-        seekBar2 = (SeekBar)findViewById(R.id.seekBar2);
-        seekBar2.setOnSeekBarChangeListener(this);
+        wordLength = (SeekBar)findViewById(R.id.seekBarWordLength);
+        wordLength.setOnSeekBarChangeListener(this);
+        guesses = (SeekBar)findViewById(R.id.seekBarGuesses);
+        guesses.setOnSeekBarChangeListener(this);
         
         // textView to show progress
         wordLengthProgress = (TextView)findViewById(R.id.word_length);
         guessesProgress = (TextView)findViewById(R.id.guesses);
         
+        // default values should also be shown
         wordLengthProgress.setText("Word length: 8");
         guessesProgress.setText("Guesses: 6");
+        
+        // enable seekbar values to be used in gameplay activity
+        int WordLength = getIntent().getIntExtra("WordLength", 0);
+        int Guesses = getIntent().getIntExtra("Guesses", 0);
     }
 
 
@@ -62,10 +67,10 @@ public class SettingsActivity extends ActionBarActivity implements OnSeekBarChan
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
     	
     	// set textView to show progress for different seekbars
-    	if (seekBar.equals(seekBar1)) {
+    	if (seekBar.equals(wordLength)) {
     		wordLengthProgress.setText("Word length: "+progress);
     	}
-    	else if (seekBar.equals(seekBar2)) {
+    	else if (seekBar.equals(guesses)) {
     		guessesProgress.setText("Guesses: "+progress);
     	}
     }
@@ -84,6 +89,8 @@ public class SettingsActivity extends ActionBarActivity implements OnSeekBarChan
     
     public void playGame(View view) {
         Intent playGameIntent = new Intent(this, GameplayActivity.class);
+        playGameIntent.putExtra("WordLength", wordLength.getProgress());
+        playGameIntent.putExtra("Guesses", guesses.getProgress());
         startActivity(playGameIntent);
     }
 }
